@@ -30,12 +30,12 @@
 | **البيئة** | Microsoft .NET 10+ |
 | **الأطر** | MAUI |
 | **قواعد البيانات** | SQLite / Azure |
-| **المنصات المدعومة** | Windows 🪟 • macOS 🍎 • Linux 🐧 • iOS 📱 • Android 📱 • Web 🌐 |
+| **المنصات المدعومة** | Windows 🪟 • macOS 🍎 • iOS 📱 • Android 📱 |
 
-> **لماذا C# و .NET 10؟**
+> **لماذا C# و .NET 10 مع MAUI؟**
 > - ✅ سهلة التعلم والفهم
 > - ✅ آمنة وموثوقة
-> - ✅ تعمل على كل الأجهزة والشاشات
+> - ✅ تعمل على كل الأجهزة المدعومة
 > - ✅ أداء عالي جداً
 > - ✅ مناسبة للتطبيقات التعليمية
 > - ✅ .NET 10 يوفر أفضل دعم متعدد المنصات مع MAUI
@@ -78,6 +78,9 @@ https://dotnet.microsoft.com/download
 
 # تثبيت Visual Studio Community (مجاني!)
 https://visualstudio.microsoft.com/
+
+# تثبيت Visual Studio Code (مجاني!)
+https://code.visualstudio.com/
 ```
 
 ### التثبيت والتشغيل
@@ -89,8 +92,17 @@ cd analog-prayer-timer
 # تثبيت المكتبات
 dotnet restore
 
-# تشغيل البرنامج
-dotnet run
+# تشغيل البرنامج على Windows
+dotnet run -f net10-windows
+
+# تشغيل البرنامج على macOS
+dotnet run -f net10-maccatalyst
+
+# تشغيل البرنامج على iOS
+dotnet run -f net10-ios -c Release
+
+# تشغيل البرنامج على Android
+dotnet run -f net10-android
 ```
 
 ---
@@ -183,18 +195,35 @@ public DateTime CalculateDhuhr(DateTime date, Location location)
 
 ## 📱 المنصات المدعومة
 
-استخدام **.NET MAUI** يسمح لنا بدعم جميع المنصات من نفس الكود:
+يدعم البرنامج المنصات التالية باستخدام **.NET MAUI**:
 
-| المنصة | النوع | الحالة |
-|--------|-------|--------|
-| **Windows** | تطبيق سطح المكتب | ✅ مدعوم |
-| **macOS** | تطبيق سطح المكتب | ✅ مدعوم |
-| **Linux** | تطبيق سطح المكتب | ✅ مدعوم |
-| **iOS** | تطبيق الهاتف | ✅ مدعوم |
-| **Android** | تطبيق الهاتف | ✅ مدعوم |
-| **الويب** | تطبيق ويب | ✅ مدعوم |
+| المنصة | النوع | الحالة | ملاحظات |
+|--------|-------|--------|---------|
+| **Windows** | سطح المكتب | ✅ مدعوم | Windows 10+ |
+| **macOS** | سطح المكتب | ✅ مدعوم | macOS 12+ |
+| **iOS** | الهاتف | ✅ مدعوم | iOS 14+ |
+| **Android** | الهاتف | ✅ مدعوم | Android 8+ |
 
-> كل هذا بنفس الكود C# باستخدام .NET 10 و MAUI! 🚀
+> **ملاحظة:** MAUI لا يدعم رسمياً Web و Linux حالياً. إذا كنت تحتاج لهذه المنصات، راجع الخيارات البديلة في القسم التالي.
+
+---
+
+## 🔄 خيارات لدعم Web و Linux
+
+إذا أردت توسيع دعم التطبيق ليشمل **Web** و **Linux**، يمكنك استخدام:
+
+### 🔷 **Blazor** (للويب)
+```csharp
+// تطبيق ويب تفاعلي باستخدام C# و Blazor WebAssembly
+```
+
+### 🔷 **Avalonia UI** (بديل شامل)
+- يدعم: Windows, macOS, Linux, iOS, Android, Web
+- مشابه لـ MAUI لكن مع دعم أوسع
+
+### 🔷 **Uno Platform** (بديل شامل)
+- يدعم: Windows, macOS, Linux, iOS, Android, Web
+- أكثر نضجاً وتطويراً
 
 ---
 
