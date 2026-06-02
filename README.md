@@ -71,39 +71,93 @@
 
 ## 🚀 كيفية البدء
 
-### المتطلبات
+### ⚠️ متطلبات النظام
+
+| المكون | الحد الأدنى | الموصى به |
+|--------|:----------:|:---------:|
+| **RAM** | 4 GB | 8+ GB |
+| **CPU** | 2 Cores | 4+ Cores |
+| **Disk** | 10 GB | 20+ GB |
+| **OS** | Windows 10+ | Windows 11+ |
+
+### 🛠️ خيارات التثبيت حسب إمكانيات جهازك
+
+#### **خيار 1️⃣: VS Code (الخيار الأفضل لأجهزة ضعيفة) ⭐**
+
 ```bash
-# تثبيت .NET SDK 10 أو أحدث
-https://dotnet.microsoft.com/download
+# خفيف جداً على الموارد
+# RAM: 1-2 GB فقط
+# Disk: 500 MB فقط
 
-# تثبيت Visual Studio Community (مجاني!)
-https://visualstudio.microsoft.com/
-
-# تثبيت Visual Studio Code (مجاني!)
+# 1. تثبيت VS Code
 https://code.visualstudio.com/
-```
 
-### التثبيت والتشغيل
-```bash
-# استنساخ المشروع
+# 2. تثبيت الإضافات:
+   - C# Dev Kit
+   - .NET Install Tool
+
+# 3. استنساخ المشروع
 git clone https://github.com/habitakatrennada/analog-prayer-timer.git
 cd analog-prayer-timer
 
-# تثبيت المكتبات
-dotnet restore
+# 4. فتح VS Code
+code .
 
-# تشغيل البرنامج على Windows
-dotnet run -f net10-windows
-
-# تشغيل البرنامج على macOS
-dotnet run -f net10-maccatalyst
-
-# تشغيل البرنامج على iOS
-dotnet run -f net10-ios -c Release
-
-# تشغيل البرنامج على Android
-dotnet run -f net10-android
+# 5. تشغيل (Ctrl + ~) لفتح Terminal
+dotnet run
 ```
+
+#### **خيار 2️⃣: Visual Studio Community**
+
+```bash
+# ثقيل على الموارد
+# RAM: 8+ GB مطلوب
+# Disk: 5+ GB مطلوب
+
+# 1. تثبيت Visual Studio Community
+https://visualstudio.microsoft.com/vs/community/
+
+# 2. اختيار Workloads:
+   ✓ .NET MAUI development
+   ✓ .NET desktop development
+
+# 3. فتح المشروع
+File > Open > Folder
+
+# 4. تشغيل: F5
+```
+
+#### **خيار 3️⃣: Terminal / Command Line (الخيار الخفيف جداً) 🚀**
+
+```bash
+# الأخف على الموارد!
+# RAM: 2 GB فقط
+# Disk: 100 MB
+
+# 1. تثبيت .NET SDK 10
+https://dotnet.microsoft.com/download
+
+# 2. استنساخ المشروع
+git clone https://github.com/habitakatrennada/analog-prayer-timer.git
+cd analog-prayer-timer
+
+# 3. تشغيل البرنامج
+dotnet run
+
+# 4. بدون GUI فقط عبر Terminal (الأخف)
+dotnet run --no-build
+```
+
+---
+
+## 📊 مقارنة IDE حسب موارد الجهاز
+
+| IDE | RAM المطلوب | CPU | Disk | الأداء |
+|--------|:----------:|:---:|:----:|:------:|
+| **VS Code** | 1-2 GB | خفيف | 500 MB | ⚡⚡⚡ سريع |
+| **CLI (Terminal)** | 2 GB | خفيف | 100 MB | ⚡⚡⚡⚡ أسرع |
+| **Visual Studio** | 8+ GB | ثقيل | 5+ GB | ⚡ بطيء |
+| **Rider** | 6+ GB | متوسط | 3+ GB | ⚡⚡ متوسط |
 
 ---
 
@@ -254,11 +308,11 @@ public DateTime CalculateDhuhr(DateTime date, Location location)
 ## 🔧 الخطوات التالية
 
 - [ ] تثبيت .NET 10 SDK
-- [ ] فتح المشروع في Visual Studio
+- [ ] اختيار IDE المناسب (VS Code موصى به للأجهزة الضعيفة)
 - [ ] تشغيل البرنامج والاستمتاع! 🎉
 - [ ] إضافة مدينتك
 - [ ] تخصيص المظهر
-- [ ] إضافة منبهات
+- [ ] إ��افة منبهات
 
 ---
 
