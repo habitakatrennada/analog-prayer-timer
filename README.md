@@ -30,7 +30,7 @@
 | **البيئة** | Microsoft .NET 10+ |
 | **الأطر** | MAUI |
 | **قواعد البيانات** | SQLite / Azure |
-| **المنصات المدعومة** | Windows 🪟 • macOS 🍎 • iOS 📱 • Android 📱 |
+| **المنصات المدعومة** | Linux 🐧 • Windows 🪟 • macOS 🍎 • iOS 📱 • Android 📱 |
 
 > **لماذا C# و .NET 10 مع MAUI؟**
 > - ✅ سهلة التعلم والفهم
@@ -69,7 +69,7 @@
 
 ---
 
-## 🚀 كيفية البدء
+## 🚀 كيفية البدء على Ubuntu
 
 ### ⚠️ متطلبات النظام
 
@@ -78,86 +78,160 @@
 | **RAM** | 4 GB | 8+ GB |
 | **CPU** | 2 Cores | 4+ Cores |
 | **Disk** | 10 GB | 20+ GB |
-| **OS** | Windows 10+ | Windows 11+ |
+| **OS** | Ubuntu 20.04+ | Ubuntu 22.04 LTS أو أحدث |
 
-### 🛠️ خيارات التثبيت حسب إمكانيات جهازك
+### 🛠️ خيارات التثبيت على Ubuntu حسب إمكانيات جهازك
 
-#### **خيار 1️⃣: VS Code (الخيار الأفضل لأجهزة ضعيفة) ⭐**
+#### **خيار 1️⃣: VS Code + .NET SDK (الخيار الأفضل والموصى به) ⭐**
 
 ```bash
-# خفيف جداً على الموارد
-# RAM: 1-2 GB فقط
-# Disk: 500 MB فقط
+# خفيف جداً على موارد النظام
+# RAM: 2-3 GB فقط
+# Disk: 1 GB فقط
 
-# 1. تثبيت VS Code
-https://code.visualstudio.com/
+# 1. تحديث قوائم الحزم
+sudo apt update && sudo apt upgrade -y
 
-# 2. تثبيت الإضافات:
-   - C# Dev Kit
-   - .NET Install Tool
+# 2. تثبيت المتطلبات الأساسية
+sudo apt install -y git curl wget
 
-# 3. استنساخ المشروع
+# 3. تثبيت .NET 10 SDK
+wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
+chmod +x dotnet-install.sh
+./dotnet-install.sh --channel 10.0
+
+# إضافة .NET إلى المسار
+echo 'export PATH=$PATH:$HOME/.dotnet' >> ~/.bashrc
+source ~/.bashrc
+
+# التحقق من التثبيت
+dotnet --version
+
+# 4. تثبيت VS Code
+sudo apt install -y code
+
+# 5. تثبيت الإضافات المهمة في VS Code:
+#    - C# Dev Kit
+#    - .NET Install Tool
+#    - C# Extensions
+
+# 6. استنساخ المشروع
 git clone https://github.com/habitakatrennada/analog-prayer-timer.git
 cd analog-prayer-timer
 
-# 4. فتح VS Code
+# 7. فتح VS Code
 code .
 
-# 5. تشغيل (Ctrl + ~) لفتح Terminal
+# 8. تشغيل المشروع (Ctrl + `) لفتح Terminal
 dotnet run
 ```
 
-#### **خيار 2️⃣: Visual Studio Community**
+#### **خيار 2️⃣: Visual Studio Code + Terminal (الخيار الخفيف جداً) 🚀**
 
 ```bash
-# ثقيل على الموارد
-# RAM: 8+ GB مطلوب
-# Disk: 5+ GB مطلوب
+# الأخف على موارد النظام!
+# RAM: 1-2 GB فقط
+# Disk: 500 MB
 
-# 1. تثبيت Visual Studio Community
-https://visualstudio.microsoft.com/vs/community/
-
-# 2. اختيار Workloads:
-   ✓ .NET MAUI development
-   ✓ .NET desktop development
-
-# 3. فتح المشروع
-File > Open > Folder
-
-# 4. تشغيل: F5
-```
-
-#### **خيار 3️⃣: Terminal / Command Line (الخيار الخفيف جداً) 🚀**
-
-```bash
-# الأخف على الموارد!
-# RAM: 2 GB فقط
-# Disk: 100 MB
-
-# 1. تثبيت .NET SDK 10
-https://dotnet.microsoft.com/download
+# 1. تثبيت .NET 10 SDK (انظر الخطوات أعلاه)
 
 # 2. استنساخ المشروع
 git clone https://github.com/habitakatrennada/analog-prayer-timer.git
 cd analog-prayer-timer
 
-# 3. تشغيل البرنامج
+# 3. تشغيل البرنامج مباشرة
 dotnet run
 
-# 4. بدون GUI فقط عبر Terminal (الأخف)
+# 4. لتشغيل بدون بناء
 dotnet run --no-build
+
+# 5. لإنشاء Release Build
+dotnet publish -c Release -o ./publish
+```
+
+#### **خيار 3️⃣: سطر الأوامر (Terminal فقط) - الأخف بلا GUI**
+
+```bash
+# للأجهزة الضعيفة جداً
+# RAM: 1 GB فقط
+# Disk: 100 MB
+
+# 1. تثبيت .NET 10 SDK
+
+# 2. استنساخ المشروع
+git clone https://github.com/habitakatrennada/analog-prayer-timer.git
+cd analog-prayer-timer
+
+# 3. تشغيل المشروع
+dotnet run
+
+# 4. لمراقب�� الأداء أثناء التطوير
+dotnet watch run
+```
+
+#### **خيار 4️⃣: JetBrains Rider (للمحترفين)**
+
+```bash
+# محرر احترافي ومتقدم
+# RAM: 4+ GB
+# Disk: 2+ GB
+
+# 1. تثبيت Rider (نسخة مدفوعة أو تجريبية)
+https://www.jetbrains.com/rider/
+
+# أو عبر snap:
+sudo snap install rider --classic
+
+# 2. فتح المشروع
+rider analog-prayer-timer
+
+# 3. تشغيل: Ctrl + F10
 ```
 
 ---
 
-## 📊 مقارنة IDE حسب موارد الجهاز
+## 📊 مقارنة الأدوات على Ubuntu حسب موارد الجهاز
 
-| IDE | RAM المطلوب | CPU | Disk | الأداء |
-|--------|:----------:|:---:|:----:|:------:|
-| **VS Code** | 1-2 GB | خفيف | 500 MB | ⚡⚡⚡ سريع |
-| **CLI (Terminal)** | 2 GB | خفيف | 100 MB | ⚡⚡⚡⚡ أسرع |
-| **Visual Studio** | 8+ GB | ثقيل | 5+ GB | ⚡ بطيء |
-| **Rider** | 6+ GB | متوسط | 3+ GB | ⚡⚡ متوسط |
+| الأداة | RAM المطلوب | CPU | Disk | الأداء | الموصى به |
+|--------|:----------:|:---:|:----:|:------:|:---------:|
+| **VS Code + .NET** | 2-3 GB | خفيف | 1 GB | ⚡⚡⚡ سريع جداً | ✅ موصى به |
+| **Terminal/CLI** | 1 GB | خفيف | 100 MB | ⚡⚡⚡⚡ الأسرع | ✅ للأجهزة الضعيفة |
+| **Visual Studio Code + Extensions** | 2 GB | خفيف | 800 MB | ⚡⚡⚡ سريع | ✅ ممتاز |
+| **JetBrains Rider** | 4+ GB | متوسط | 2+ GB | ⚡⚡ متوسط | ⭐ للمحترفين |
+
+---
+
+## 🔧 الأدوات المفيدة على Ubuntu
+
+### أدوات التطوير الأساسية
+
+```bash
+# تثبيت أدوات البناء والتطوير
+sudo apt install -y build-essential git curl
+
+# تثبيت Git (إن لم يكن مثبتاً)
+sudo apt install -y git
+git config --global user.name "اسمك"
+git config --global user.email "بريدك@example.com"
+
+# تثبيت Node.js (اختياري، للأدوات الإضافية)
+sudo apt install -y nodejs npm
+
+# تثبيت Docker (اختياري، للنشر)
+sudo apt install -y docker.io docker-compose
+```
+
+### مراقبة الأداء أثناء التطوير
+
+```bash
+# تشغيل مراقب الموارد
+# استخدم Ctrl+Shift+Esc في سطح المكتب، أو:
+sudo apt install -y htop
+htop
+
+# أو استخدم top:
+top
+```
 
 ---
 
@@ -253,18 +327,19 @@ public DateTime CalculateDhuhr(DateTime date, Location location)
 
 | المنصة | النوع | الحالة | ملاحظات |
 |--------|-------|--------|---------|
+| **Linux** | سطح المكتب | ✅ مدعوم | Ubuntu 20.04+ و Fedora وغيره |
 | **Windows** | سطح المكتب | ✅ مدعوم | Windows 10+ |
 | **macOS** | سطح المكتب | ✅ مدعوم | macOS 12+ |
 | **iOS** | الهاتف | ✅ مدعوم | iOS 14+ |
 | **Android** | الهاتف | ✅ مدعوم | Android 8+ |
 
-> **ملاحظة:** MAUI لا يدعم رسمياً Web و Linux حالياً. إذا كنت تحتاج لهذه المنصات، راجع الخيارات البديلة في القسم التالي.
+> **ملاحظة:** MAUI لا يدعم رسمياً Web حالياً. إذا كنت تحتاج لتطبيق ويب، راجع الخيارات البديلة في القسم التالي.
 
 ---
 
-## 🔄 خيارات لدعم Web و Linux
+## 🔄 خيارات لدعم Web و Linux بشكل أوسع
 
-إذا أردت توسيع دعم التطبيق ليشمل **Web** و **Linux**، يمكنك استخدام:
+إذا أردت توسيع دعم التطبيق ليشمل **Web** و **Linux** بشكل أوسع، يمكنك استخدام:
 
 ### 🔷 **Blazor** (للويب)
 ```csharp
@@ -307,12 +382,13 @@ public DateTime CalculateDhuhr(DateTime date, Location location)
 
 ## 🔧 الخطوات التالية
 
+- [ ] تحديث نظام Ubuntu
 - [ ] تثبيت .NET 10 SDK
-- [ ] اختيار IDE المناسب (VS Code موصى به للأجهزة الضعيفة)
-- [ ] تشغيل البرنامج والاستمتاع! 🎉
+- [ ] تثبيت VS Code والإضافات
+- [ ] استنساخ المشروع وتشغيله
 - [ ] إضافة مدينتك
 - [ ] تخصيص المظهر
-- [ ] إ��افة منبهات
+- [ ] إضافة منبهات
 
 ---
 
@@ -352,5 +428,6 @@ public DateTime CalculateDhuhr(DateTime date, Location location)
 
 **آخر تحديث:** يونيو 2026
 **الإصدار:** 1.0.0
+**البيئة المفضلة:** Ubuntu 22.04 LTS مع VS Code و .NET 10
 
 ⭐ إذا أعجبك المشروع، لا تنسَ أن تعطيه ⭐!
