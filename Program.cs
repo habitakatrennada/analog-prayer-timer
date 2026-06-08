@@ -12,7 +12,7 @@ var prayerTimes = calculator.CalculateTimes(today, location);
 Console.WriteLine($"التاريخ: {today:yyyy-MM-dd}");
 Console.WriteLine($"الموقع: خط عرض {location.Latitude}, خط طول {location.Longitude}");
 Console.WriteLine();
-
+// عرض أوقات الصلاة بشكل منسق
 foreach (var prayer in prayerTimes)
 {
     Console.WriteLine($"{prayer.Name,-10}: {prayer.Time:HH:mm}");
