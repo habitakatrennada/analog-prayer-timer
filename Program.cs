@@ -1,7 +1,7 @@
 using AnalogPrayerTimer.PrayerCalculations;
 using AnalogPrayerTimer.Models;
 
-Console.WriteLine("مرحباً بكم في مشروع Analog Prayer Timer!");
+Console.WriteLine("Wellcome to the Analog Prayer Timer application!");
 Console.WriteLine();
 
 var location = new Location { Latitude = 24.7136, Longitude = 46.6753 };
